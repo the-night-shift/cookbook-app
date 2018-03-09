@@ -15,4 +15,19 @@ class V2::RecipesController < ApplicationController
     # show that recipe to the user
     render json: recipe.as_json
   end
+
+  def create
+    # make a new recipe in the database
+    recipe1 = Recipe.new(
+      title: params[:input_title],
+      ingredients: params[:input_ingredients],
+      directions: params[:input_directions],
+      prep_time: params[:input_prep_time],
+      chef: params[:input_chef],
+      image_url: params[:input_image_url]
+    )
+    recipe1.save
+    # render?
+    render json: recipe1.as_json
+  end
 end

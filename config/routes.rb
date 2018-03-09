@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   namespace :v2 do
     get '/recipes' => 'recipes#index'
     get '/recipes/:id' => 'recipes#show'
+    post '/recipes' => 'recipes#create'
   end
 end
