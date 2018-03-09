@@ -46,4 +46,13 @@ class V2::RecipesController < ApplicationController
     )
     render json: recipe.as_json
   end
+
+  def destroy
+    # find a particular recipe
+    the_id = params[:id]
+    recipe = Recipe.find_by(id: the_id)
+    # destroy that recipe
+    recipe.destroy
+    render json: {message: "You have been deleted"}
+  end
 end
