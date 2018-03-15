@@ -1,5 +1,10 @@
 require 'unirest'
 
+# p "type in your search query here"
+# search_term = gets.chomp
+# response = Unirest.get("localhost:3000/v2/recipes?search=#{search_term}")
+# p response.body
+
 # create action
 # p "enter your title"
 # title = gets.chomp
@@ -64,9 +69,9 @@ require 'unirest'
 
 # destroy
 
-p "which recipe would you like to delete?"
-recipe_id = gets.chomp
+# p "which recipe would you like to delete?"
+# recipe_id = gets.chomp
 
-response = Unirest.delete("localhost:3000/v2/recipes/#{recipe_id}")
+# response = Unirest.delete("localhost:3000/v2/recipes/#{recipe_id}")
 
-puts JSON.pretty_generate(response.body)
+# puts JSON.pretty_generate(response.body)

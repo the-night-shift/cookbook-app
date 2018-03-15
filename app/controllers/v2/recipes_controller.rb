@@ -2,7 +2,10 @@ class V2::RecipesController < ApplicationController
   def index
     # show all the recipes
     # get all the recipes from the db
-    recipes = Recipe.all
+    # all recipes sorted by id
+    # filter and have only sandwiches show up
+    search_term = params[:search]
+    recipes = Recipe.all.order(:id).where("title LIKE ?", "%#{search_term}%")
     # show the recipes to the user
     render json: recipes.as_json
   end
