@@ -75,3 +75,15 @@ require 'unirest'
 # response = Unirest.delete("localhost:3000/v2/recipes/#{recipe_id}")
 
 # puts JSON.pretty_generate(response.body)
+
+
+response = Unirest.post("localhost:3000/v2/users", parameters:
+  {
+    name: "joe",
+    email: "joe@joe.com",
+    password: "password",
+    password_confirmation: "password"
+  }
+)
+
+p response.body
