@@ -77,13 +77,26 @@ require 'unirest'
 # puts JSON.pretty_generate(response.body)
 
 
-response = Unirest.post("localhost:3000/v2/users", parameters:
-  {
-    name: "joe",
-    email: "joe@joe.com",
-    password: "password",
-    password_confirmation: "password"
+# create new user
+# response = Unirest.post("localhost:3000/v2/users", parameters:
+#   {
+#     name: "joe",
+#     email: "joe@joe.com",
+#     password: "password",
+#     password_confirmation: "password"
+#   }
+# )
+
+# p response.body
+
+# get new JSON web token
+response = Unirest.post(
+  "http://localhost:3000/user_token",
+  parameters: {
+    auth: {
+      email: "bob@bob.com",
+      password: "password"
+    }
   }
 )
-
 p response.body

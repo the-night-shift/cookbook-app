@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post 'user_token' => 'user_token#create'
   namespace :v1 do
     get '/the_recipe' => 'recipes#show_the_recipe'
     get '/all_the_recipes' => 'recipes#all_the_recipes'
