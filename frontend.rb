@@ -78,14 +78,14 @@ require 'unirest'
 
 
 # create new user
-# response = Unirest.post("localhost:3000/v2/users", parameters:
-#   {
-#     name: "joe",
-#     email: "joe@joe.com",
-#     password: "password",
-#     password_confirmation: "password"
-#   }
-# )
+response = Unirest.post("localhost:3000/v2/users", parameters:
+  {
+    name: "joe",
+    email: "joe@joe.com",
+    password: "password",
+    password_confirmation: "password"
+  }
+)
 
 # p response.body
 
