@@ -14,6 +14,8 @@ var RecipesNewPage = {
   },
   methods: {
     submit: function() {
+      // gets the info from the form
+      // makes an object to send to the API
       var params = {
         input_ingredients: this.ingredients,
         input_title: this.title,
