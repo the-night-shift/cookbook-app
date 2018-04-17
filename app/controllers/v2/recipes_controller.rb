@@ -31,7 +31,8 @@ class V2::RecipesController < ApplicationController
       directions: params[:input_directions],
       prep_time: params[:input_prep_time],
       chef: params[:input_chef],
-      image_url: params[:input_image_url]
+      image_url: params[:input_image_url],
+      user_id: current_user.id
     )
     recipe1.save
     # render?

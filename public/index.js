@@ -1,4 +1,42 @@
 /* global Vue, VueRouter, axios */
+var RecipesNewPage = {
+  template: "#recipes-new-page",
+  data: function() {
+    return {
+      ingredients: "",
+      title: "",
+      directions: "",
+      imageUrl: "",
+      chef: "",
+      prepTime: "",
+      errors: []
+    };
+  },
+  methods: {
+    submit: function() {
+      var params = {
+        input_ingredients: this.ingredients,
+        input_title: this.title,
+        input_directions: this.directions,
+        input_image_url: this.imageUrl,
+        input_chef: this.chef,
+        input_prep_time: this.prepTime
+      };
+      axios
+        .post("/v2/recipes", params)
+        .then(function(response) {
+          router.push("/");
+        })
+        .catch(
+          function(error) {
+            this.errors = error.response.data.errors;
+          }.bind(this)
+        );
+    }
+  }
+};
+
+
 var LogoutPage = {
   template: "<h1>Logout</h1>",
   created: function() {
@@ -112,6 +150,7 @@ var router = new VueRouter({
     { path: "/practice", component: PracticePage },
     { path: "/signup", component: SignupPage },
     { path: "/login", component: LoginPage },
+    { path: "/recipes/new", component: RecipesNewPage },
     { path: "/logout", component: LogoutPage }
   ],
   scrollBehavior: function(to, from, savedPosition) {
