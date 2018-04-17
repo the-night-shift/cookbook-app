@@ -1,5 +1,9 @@
 class V2::RecipesController < ApplicationController
   def index
+    p "*" * 50
+    p "i am the current user"
+    p current_user
+    p "*" * 50
     # show all the recipes
     # get all the recipes from the db
     # all recipes sorted by id
