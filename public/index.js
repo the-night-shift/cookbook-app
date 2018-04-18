@@ -1,4 +1,25 @@
 /* global Vue, VueRouter, axios */
+
+var RecipesShowPage = {
+  template: "#recipes-show-page",
+  data: function() {
+    return {
+      message: "Welcome to Vue.js!",
+      recipe: {}
+    };
+  },
+  created: function() {
+                               // params[:id]
+    axios.get("/v2/recipes/" + this.$route.params.id).then(function(response) {
+      console.log(response.data);
+      this.recipe = response.data;
+    }.bind(this));
+  },
+  methods: {},
+  computed: {}
+};
+
+
 var RecipesNewPage = {
   template: "#recipes-new-page",
   data: function() {
@@ -152,6 +173,7 @@ var router = new VueRouter({
     { path: "/practice", component: PracticePage },
     { path: "/signup", component: SignupPage },
     { path: "/login", component: LoginPage },
+    { path: "/recipes/:id", component: RecipesShowPage },
     { path: "/recipes/new", component: RecipesNewPage },
     { path: "/logout", component: LogoutPage }
   ],

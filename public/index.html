@@ -130,7 +130,7 @@
           <img class="image-url" v-bind:src="recipe.image_url" width="200px">
           <p class="card-text ingredients">Ingredients: {{ recipe.ingredients }}</p>
           <p class="card-text directions">Directions: {{ recipe.directions }}</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <a v-bind:href="'/#/recipes/' + recipe.id" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
     </div>
@@ -215,7 +215,6 @@
 
 <template id="login-page">
   <div class="vue-component">
-
     <div class="container">
       <h1>Login</h1>
       <ul>
@@ -235,3 +234,13 @@
   </div>
 </template>
 
+
+<template id="recipes-show-page">
+  <div>
+    <p>{{ message}}</p>
+    <p>title: {{recipe.title}}</p>
+    <p>chef: {{recipe.chef}}</p>
+    <p>directions: {{recipe.directions}}</p>
+    <img v-bind:src="recipe.image_url">
+  </div>
+</template>
