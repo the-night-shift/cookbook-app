@@ -154,16 +154,37 @@ var HomePage = {
   data: function() {
     return {
       message: "Welcome to Vue.js!",
-      recipes: []
+      recipes: [],
+      currentRecipe: {title: "", directions: "", prep_time: "", ingredients: "", chef: ""},
+      errors: []
     };
   },
   created: function() {
     axios.get("/v2/recipes").then(function(response) {
-      console.log(response.data)
+      console.log(response.data);
       this.recipes = response.data;
     }.bind(this));
   },
-  methods: {},
+  methods: {
+    setCurrentRecipe: function(inputRecipe) {
+      this.currentRecipe = inputRecipe;
+    },
+    updateRecipe: function() {
+      // grab the info from the form
+      var params = {
+        input_title: this.currentRecipe.title,
+        input_chef: this.currentRecipe.chef,
+        input_ingredients: this.currentRecipe.ingredients,
+        input_directions: this.currentRecipe.directions,
+        input_prep_time: this.currentRecipe.prep_time
+      };
+      // make an axios request
+      axios.patch("/v2/recipes/" + this.currentRecipe.id, params).then(function(response) {
+
+        console.log('done with the updating');
+      })
+    }
+  },
   computed: {}
 };
 

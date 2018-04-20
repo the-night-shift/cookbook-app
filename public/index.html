@@ -131,9 +131,57 @@
           <p class="card-text ingredients">Ingredients: {{ recipe.ingredients }}</p>
           <p class="card-text directions">Directions: {{ recipe.directions }}</p>
           <a v-bind:href="'/#/recipes/' + recipe.id" class="btn btn-primary">Go somewhere</a>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" v-on:click="setCurrentRecipe(recipe)">
+            Edit this recipe
+          </button>
+
         </div>
       </div>
     </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <h1>Make a new recipe</h1>
+              <ul>
+                <li class="text-danger" v-for="error in errors">{{ error }}</li>
+              </ul>
+              <div class="form-group">
+                <label>Title:</label>
+                <input type="text" class="form-control" v-model="currentRecipe.title">
+              </div>
+              <div class="form-group">
+                <label>Ingredients:</label>
+                <input type="text" class="form-control" v-model="currentRecipe.ingredients">
+              </div>
+              <div class="form-group">
+                <label>Directions:</label>
+                <input type="text" class="form-control" v-model="currentRecipe.directions">
+              </div>
+              <div class="form-group">
+                <label>Prep Time:</label>
+                <input type="text" class="form-control" v-model="currentRecipe.prepTime">
+              </div>
+              <div class="form-group">
+                <label>Chef:</label>
+                <input type="text" class="form-control" v-model="currentRecipe.chef">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button data-dismiss="modal" type="button" class="btn btn-primary" v-on:click="updateRecipe()">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
 </template>
 
